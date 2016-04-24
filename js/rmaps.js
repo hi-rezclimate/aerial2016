@@ -1,6 +1,6 @@
 var goal = new L.LayerGroup();
-  L.marker([52.087466, 5.106728]).bindPopup('stg1goal.').addTo(goal),
-  L.marker([51.633399, 3.700630]).bindPopup('stg2goal.').addTo(goal),
+  L.marker([35.736344, 140.861483]).bindPopup("生マアジ 12t 285円/kg<br />生サバ 2,770t 53円/kg<br />生さわら類 0.8t 1,205円/kg<br />生クロマグロ 0.3t 1,435円/kg").addTo(goal)
+/*  L.marker([51.633399, 3.700630]).bindPopup('stg2goal.').addTo(goal),
   L.marker([50.513931, 5.251338]).bindPopup('stg3goal').addTo(goal),
   L.marker([50.175865, 3.234486]).bindPopup('stg4goal').addTo(goal);
   L.marker([49.888778, 2.295705]).bindPopup('stg5goal').addTo(goal);
@@ -20,7 +20,7 @@ var goal = new L.LayerGroup();
   L.marker([45.255766, 6.257036]).bindPopup('stg19goal').addTo(goal);
   L.marker([45.092703, 6.071873]).bindPopup('stg20goal').addTo(goal);
   L.marker([48.867109, 2.315993]).bindPopup('stg21goal').addTo(goal);
-
+*/
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
   '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -34,8 +34,8 @@ var streets = L.tileLayer(mbUrl, {
 });
 
 var map = L.map('map', {
-  center: [48.867109, 2.315993],
-  zoom: 5,
+  center: [35.736344, 140.861483],
+  zoom: 13,
   layers: [streets, goal]
 });
 
