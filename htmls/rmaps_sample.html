@@ -1,106 +1,303 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
-	<title>Leaflet GeoJSON Example</title>
-	<meta charset="utf-8" />
-
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="GrandTour, DashBoard">
+	<meta name="author" content="Shoichi Otomo">
+	<!--favicon-->
+	<!--<link rel="shortcut icon" href="img/grantour.ico">-->
 
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+	<title>Fisher-Aerial</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="../libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/bootstrap-reset.css" rel="stylesheet">
+
+	<!--Animation css-->
+	<link href="../css/animate.css" rel="stylesheet">
+
+	<!--Icon-fonts css-->
+	<link href="../font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="../ionicon/css/ionicons.min.css" rel="stylesheet" />
+
+	<!-- Custom styles for this template -->
+	<link href="../css/style.css" rel="stylesheet">
+	<link href="../css/helper.css" rel="stylesheet">
+
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+	<!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+
 </head>
 
+
 <body>
-	<div id="map" style="width: 600px; height: 400px"></div>
 
-	<script src="http://leafletjs.com/examples/sample-geojson.js" type="text/javascript"></script>
-	<script src="../js/sample-geojson.js" type="text/javascript"></script>
+	<!-- Aside Start-->
+	<aside class="left-panel">
+
+		<!-- brand -->
+		<div class="logo">
+			<a href="../index.html" class="logo-expanded">
+				<i class="ion-earth"></i>
+				<span class="nav-label">Fisher-Aerial</span>
+			</a>
+		</div>
+		<!-- / brand -->
+
+		<!-- Navbar Start -->
+		<nav class="navigation">
+			<ul class="list-unstyled">
+				<!--<li><a href="../index.html"><i class="ion-home"></i> <span class="nav-label">Dashboard</span></a></li>-->
+
+				<li class="has-submenu"><a href="#"><i class="ion-stats-bars"></i> <span class="nav-label">Charts</span></a>
+					<ul class="list-unstyled">
+						<li><a href="chartjs.html">Chartjs</a></li>
+					</ul>
+				</li>
+
+				<li class="has-submenu"><a href="#"><i class="ion-location"></i> <span class="nav-label">Maps</span></a>
+					<ul class="list-unstyled">
+						<li><a href="reaflet.html"> Tile Maps</a></li>
+						<!--<li><a href="googlemap.html"> Maps(by googleMap)</a></li>-->
+					</ul>
+				</li>
+
+				<li class="has-submenu"><a href="#"><i class="ion-ios-list"></i> <span class="nav-label">Data</span></a>
+					<ul class="list-unstyled">
+						<li><a href="gcom_w1.html"> GCOM-W1</a></li>
+						<li><a href="tide.html"> tide</a></li>
+					</ul>
+				</li>
+
+				<li class="has-submenu"><a href="#"><i class="ion-social-buffer"></i> <span class="nav-label">Our products</span></a>
+					<ul class="list-unstyled">
+						<li><a href="http://www.aerial-proj.org/"> 2015</a></li>
+						<li><a href="http://www.aerial-proj.org/playground/"> 2014</a></li>
+					</ul>
+				</li>
+
+			</ul>
+		</nav>
+
+	</aside>
+	<!-- Aside Ends-->
+
+
+	<!--Main Content Start -->
+	<section class="content">
+
+		<!-- Header -->
+		<header class="top-head container-fluid">
+			<button type="button" class="navbar-toggle pull-left">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<!-- Left navbar -->
+			<nav class=" navbar-default" role="navigation">
+				<ul class="nav navbar-nav hidden-xs">
+					<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">fisher-aerial<span class="caret"></span></a>
+						<ul role="menu" class="dropdown-menu">
+							<li><a href="#">honmoku</a></li>
+							<li><a href="#">daikoku</a></li>
+							<li><a href="#">isogo</a></li>
+						</ul>
+					</li>
+					<!--<li><a href="#">today's result</a></li>-->
+				</ul>
+
+				<!-- Right navbar -->
+				<ul class="nav navbar-nav navbar-right top-menu top-right-menu">
+				</ul>
+				<!-- End right navbar -->
+			</nav>
+
+		</header>
+		<!-- Header Ends -->
+
+		<!-- Page Content Start -->
+		<!-- ================== -->
+
+		<div class="wraper container-fluid">
+			<div class="page-title">
+				<h3 class="title">Vector Map</h3>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="portlet">
+						<!-- /primary heading -->
+						<div class="portlet-heading">
+							<h3 class="portlet-title text-dark">
+														World Map
+											 </h3>
+							<div class="portlet-widgets">
+								<a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+								<span class="divider"></span>
+								<a data-toggle="collapse" data-parent="#accordion1" href="#portlets1"><i class="ion-minus-round"></i></a>
+								<span class="divider"></span>
+								<a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div id="portlets1" class="panel-collapse collapse in">
+							<div class="portlet-body">
+								<div id="snd" class="osm"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End row -->
+
+
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="portlet">
+						<!-- /primary heading -->
+						<div class="portlet-heading">
+							<h3 class="portlet-title text-dark">
+														Map Europ
+											 </h3>
+							<div class="portlet-widgets">
+								<a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+								<span class="divider"></span>
+								<a data-toggle="collapse" data-parent="#accordion1" href="#portlets2"><i class="ion-minus-round"></i></a>
+								<span class="divider"></span>
+								<a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div id="portlets2" class="panel-collapse collapse in">
+							<div class="portlet-body">
+								<div id="europe-vmap" class="vmap-space"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="portlet">
+						<!-- /primary heading -->
+						<div class="portlet-heading">
+							<h3 class="portlet-title text-dark">
+														Map Asia
+											 </h3>
+							<div class="portlet-widgets">
+								<a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+								<span class="divider"></span>
+								<a data-toggle="collapse" data-parent="#accordion1" href="#portlets3"><i class="ion-minus-round"></i></a>
+								<span class="divider"></span>
+								<a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div id="portlets3" class="panel-collapse collapse in">
+							<div class="portlet-body">
+								<div id="asia-vmap" class="vmap-space"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end row -->
+
+
+
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="portlet">
+						<!-- /primary heading -->
+						<div class="portlet-heading">
+							<h3 class="portlet-title text-dark">
+													 Map Australia
+											 </h3>
+							<div class="portlet-widgets">
+								<a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+								<span class="divider"></span>
+								<a data-toggle="collapse" data-parent="#accordion1" href="#portlets4"><i class="ion-minus-round"></i></a>
+								<span class="divider"></span>
+								<a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div id="portlets4" class="panel-collapse collapse in">
+							<div class="portlet-body">
+								<div id="australia-vmap" class="vmap-space"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="portlet">
+						<!-- /primary heading -->
+						<div class="portlet-heading">
+							<h3 class="portlet-title text-dark">
+													 Map USA
+											 </h3>
+							<div class="portlet-widgets">
+								<a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+								<span class="divider"></span>
+								<a data-toggle="collapse" data-parent="#accordion1" href="#portlets5"><i class="ion-minus-round"></i></a>
+								<span class="divider"></span>
+								<a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div id="portlets5" class="panel-collapse collapse in">
+							<div class="portlet-body">
+								<div id="vmap-usa" class="vmap-space"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- End row -->
+
+
+
+			<!-- Footer Start -->
+			<footer class="footer">
+				<p>Copyrights&copy; Shoichi Otomo All rights reserved.</p>
+			</footer>
+			<!-- Footer Ends -->
+
+
+	</section>
+
+
+	<!-- js placed at the end of the document so the pages load faster -->
+	<!--<script src="js/jquery.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../libraries/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../js/pace.min.js"></script>
+	<!--<script src="js/modernizr.min.js"></script>-->
+	<!--<script src="js/wow.min.js"></script>-->
+	<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
+
+	<!-- Chart JS -->
+	<script src="../libraries/Chart.js/Chart.min.js"></script>
+	<script src="../js/chartjs.init.js"></script>
+	<!-- reafletmaps JS -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<script src="../js/rmaps.js"></script>
+	<script src="../js/snd.js"></script>
+	<script src="../js/sample-geojson.js" type="text/javascript"></script>
+	<script src="../js/jquery.appinit.js"></script>
 
-	<script>
-		var map = L.map('map').setView([51.633399, 3.70063], 6);
 
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'mapbox.light'
-		}).addTo(map);
-
-		/*var baseballIcon = L.icon({
-			iconUrl: 'baseball-marker.png',
-			iconSize: [32, 37],
-			iconAnchor: [16, 37],
-			popupAnchor: [0, -28]
-		});
-*/
-
-		function onEachFeature(feature, layer) {
-			var popupContent = "<p>I started out as a GeoJSON " +
-				feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
-
-			if (feature.properties && feature.properties.popupContent) {
-				popupContent += feature.properties.popupContent;
-			}
-
-			layer.bindPopup(popupContent);
-		}
-		/*
-				L.geoJson([bicycleRental, campus], {
-
-					style: function (feature) {
-						return feature.properties && feature.properties.style;
-					},
-
-					onEachFeature: onEachFeature,
-
-					pointToLayer: function (feature, latlng) {
-						return L.circleMarker(latlng, {
-							radius: 8,
-							fillColor: "#ff7800",
-							color: "#000",
-							weight: 1,
-							opacity: 1,
-							fillOpacity: 0.8
-						});
-					}
-				}).addTo(map);
-		*/
-
-		L.geoJson(stg1).addTo(map);
-		//		L.geoJson(stg2).addTo(map);
-		//		L.geoJson(stg3).addTo(map);
-		L.geoJson(stg3, {
-
-			filter: function(feature, layer) {
-				if (feature.properties) {
-					// If the property "underConstruction" exists and is true, return false (don't render features under construction)
-					return feature.properties.underConstruction !== undefined ? !feature.properties.underConstruction : true;
-				}
-				return false;
-			},
-
-			onEachFeature: onEachFeature
-		}).addTo(map);
-
-		L.geoJson(stg2, {
-			filter: function(feature, layer) {
-				return feature.properties.field_1;
-			}
-			//layer.bindPopup(field_1);
-		}).addTo(map);
-		/*
-				var coorsLayer = L.geoJson(coorsField, {
-
-					pointToLayer: function (feature, latlng) {
-						return L.marker(latlng, {icon: baseballIcon});
-					},
-
-					onEachFeature: onEachFeature
-				}).addTo(map);
-		*/
-	</script>
 </body>
 
 </html>
